@@ -11,7 +11,9 @@ And Hacer una reserva de viaje en la pagina
     When Ingreso los datos: Name <name>, Apellido <surname>, Email <mail>, ConfEmail <confEmail>, Number <number>, Address <address>
     And Selecciono el pais
     And Selecciono un Extra
-    Then Confirmo Reserva
+    And Confirmo Reserva
+    When Selecciono metodo de Pago
+
 
     Examples:
       | name    | surname  | mail                  | confEmail             | number     | address            |

@@ -5,6 +5,7 @@ import com.crowdar.core.PageSteps;
 import com.crowdar.examples.pages.PhpTravels.PhpHomePage;
 import com.crowdar.examples.pages.PhpTravels.PhpTravelsHotel;
 import com.crowdar.examples.pages.PhpTravels.PhpTravelsHotelsDetalle;
+import com.crowdar.examples.pages.PhpTravels.PhpTravelsPago;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -54,9 +55,15 @@ public class PhpSteps extends PageSteps {
         Injector._page(PhpTravelsHotelsDetalle.class).seleccionoExtra();
     }
 
-    @Then("Confirmo Reserva")
+    @And("Confirmo Reserva")
     public void confirmoReserva() {
         Injector._page(PhpTravelsHotelsDetalle.class).confirm();
     }
 
+    @When("Selecciono metodo de Pago")
+    public void seleccionoMetodoDePago() {
+        Injector._page(PhpTravelsPago.class).validateContenedor();
+        Injector._page(PhpTravelsPago.class).tapPagos();
+        Injector._page(PhpTravelsPago.class).validatePay();
+    }
 }

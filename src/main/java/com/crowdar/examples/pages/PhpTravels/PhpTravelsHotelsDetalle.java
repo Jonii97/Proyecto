@@ -1,8 +1,6 @@
 package com.crowdar.examples.pages.PhpTravels;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
@@ -25,7 +23,8 @@ public class PhpTravelsHotelsDetalle extends PhpBasePage{
     private final String COUNTRY_CSS = "#guestform > div:nth-child(5) > div > div.chosen-container.chosen-container-single";
     private final String SELECT_COUNTRY_CSS = "#guestform > div:nth-child(5) > div > div.chosen-container.chosen-container-single.chosen-with-drop.chosen-container-active > div > ul > li:nth-child(6)";
 
-    private final String EXTRA_XPATH = "//*[@id=\"bookingdetails\"]/div[2]/div/table/tbody/tr[1]/td[4]/label/span[1]";
+    private final String EXTRA_UNO_XPATH = "//*[@id=\"bookingdetails\"]/div[2]/div/table/tbody/tr[1]/td[4]/label/span[1]";
+    private final String EXTRA_DOS_XPATH = "//*[@id=\"bookingdetails\"]/div[2]/div/table/tbody/tr[3]/td[4]/label/span[1]";
 
     private final String CONFIRM_CSS = "#bookingdetails > div.form-group > button";
 
@@ -63,18 +62,15 @@ public class PhpTravelsHotelsDetalle extends PhpBasePage{
     }
 
     public void seleccionoExtra(){
-        driver.findElement(By.xpath(EXTRA_XPATH)).click();
+        driver.findElement(By.xpath(EXTRA_UNO_XPATH)).click();
         sleep(2000);
-        driver.findElement(By.xpath(EXTRA_XPATH)).click();
+        driver.findElement(By.xpath(EXTRA_DOS_XPATH)).click();
+        sleep(2000);
     }
 
 
     public void confirm(){
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(2000);
         clickElement(By.cssSelector(CONFIRM_CSS));
     }
 }
