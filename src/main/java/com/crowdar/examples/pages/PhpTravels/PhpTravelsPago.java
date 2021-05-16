@@ -13,7 +13,7 @@ public class PhpTravelsPago extends PhpBasePage{
 
     private final String CONTEINER_CSS = "body > div.body-inner > div.main-wrapper.scrollspy-action > div.main-wrapper.scrollspy-action > div > div";
 
-    private final String BUTTON_PAY_ON_XPATH = "//*[@id=\"248\"]";
+    private final String BUTTON_PAY_ON_XPATH = "//*[contains(@class,'btn btn-default arrivalpay')]";
 
     private final String CONFIRMACION_CSS = "body > div.body-inner > div.main-wrapper.scrollspy-action > div.main-wrapper.scrollspy-action > div > div > div.success-box.reserved > div.content";
 
@@ -25,10 +25,11 @@ public class PhpTravelsPago extends PhpBasePage{
 
     public void tapPagos(){
         waitForElementPresence(By.xpath(BUTTON_PAY_ON_XPATH));
-        clickElement(By.xpath(BUTTON_PAY_ON_XPATH));
+        driver.findElement(By.xpath(BUTTON_PAY_ON_XPATH)).click();
     }
 
     public void manejoAlerta(){
+        sleep(2000);
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
@@ -36,6 +37,7 @@ public class PhpTravelsPago extends PhpBasePage{
     public void confirmacion(){
         waitForElementPresence(By.cssSelector(CONFIRMACION_CSS));
         Assert.assertTrue(isElementPresent(By.cssSelector(CONFIRMACION_CSS)), "El contenedor no Esta");
+        sleep(3000);
     }
 
 }

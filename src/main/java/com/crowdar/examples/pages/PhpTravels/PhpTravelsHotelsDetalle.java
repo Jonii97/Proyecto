@@ -2,6 +2,7 @@ package com.crowdar.examples.pages.PhpTravels;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 
 public class PhpTravelsHotelsDetalle extends PhpBasePage{
