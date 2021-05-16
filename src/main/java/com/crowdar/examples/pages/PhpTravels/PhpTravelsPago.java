@@ -1,5 +1,6 @@
 package com.crowdar.examples.pages.PhpTravels;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -12,9 +13,9 @@ public class PhpTravelsPago extends PhpBasePage{
 
     private final String CONTEINER_CSS = "body > div.body-inner > div.main-wrapper.scrollspy-action > div.main-wrapper.scrollspy-action > div > div";
 
-    private final String BUTTON_PAY_CSS = "body > div.body-inner > div.main-wrapper.scrollspy-action > div.main-wrapper.scrollspy-action > div > div > div.form-group > center > button.btn.btn-primary";
+    private final String BUTTON_PAY_ON_XPATH = "//*[@id=\"248\"]";
 
-    private final String METODO_PAGO_CSS = "#pay > div > div.modal-body";
+    private final String CONFIRMACION_CSS = "body > div.body-inner > div.main-wrapper.scrollspy-action > div.main-wrapper.scrollspy-action > div > div > div.success-box.reserved > div.content";
 
 
     public void validateContenedor(){
@@ -23,12 +24,18 @@ public class PhpTravelsPago extends PhpBasePage{
     }
 
     public void tapPagos(){
-        waitForElementPresence(By.cssSelector(BUTTON_PAY_CSS));
-        clickElement(By.cssSelector(BUTTON_PAY_CSS));
+        waitForElementPresence(By.xpath(BUTTON_PAY_ON_XPATH));
+        clickElement(By.xpath(BUTTON_PAY_ON_XPATH));
     }
 
-    public void validatePay(){
-        Assert.assertTrue(isElementPresent(By.cssSelector(METODO_PAGO_CSS)), "El metodo de Pago no esta");
+    public void manejoAlerta(){
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
+    public void confirmacion(){
+        waitForElementPresence(By.cssSelector(CONFIRMACION_CSS));
+        Assert.assertTrue(isElementPresent(By.cssSelector(CONFIRMACION_CSS)), "El contenedor no Esta");
     }
 
 }

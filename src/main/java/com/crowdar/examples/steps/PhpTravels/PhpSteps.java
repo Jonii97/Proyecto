@@ -60,10 +60,15 @@ public class PhpSteps extends PageSteps {
         Injector._page(PhpTravelsHotelsDetalle.class).confirm();
     }
 
-    @When("Selecciono metodo de Pago")
+    @And("Selecciono metodo de Pago")
     public void seleccionoMetodoDePago() {
         Injector._page(PhpTravelsPago.class).validateContenedor();
         Injector._page(PhpTravelsPago.class).tapPagos();
-        Injector._page(PhpTravelsPago.class).validatePay();
+        Injector._page(PhpTravelsPago.class).manejoAlerta();
+    }
+
+    @Then("Confirmo resevacion")
+    public void confirmoResevacion() {
+        Injector._page(PhpTravelsPago.class).confirmacion();
     }
 }
