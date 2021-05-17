@@ -1,8 +1,8 @@
 package com.crowdar.examples.pages.PhpTravels;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 
 public class PhpTravelsHotelsDetalle extends PhpBasePage{
@@ -11,6 +11,8 @@ public class PhpTravelsHotelsDetalle extends PhpBasePage{
         super(driver);
         this.url="";
     }
+
+    private final String FORM_CSS = "body > div.body-inner > div.main-wrapper.scrollspy-action > div > div > div > div > div.acc_section > div > div.col-md-8.offset-0.go-right.order-2.order-lg-first > div:nth-child(2) > div.bg-white-shadow.pt-25.ph-30.pb-40";
 
     private final String FIRST_NAME_CSS = "#guestform > div.row.gap-20.mb-0 > div.col-12.col-sm-6.o2 > div > label > input";
     private final String SURNAME_CSS = "#guestform > div.row.gap-20.mb-0 > div.col-md-6.col-12.o1 > label > input";
@@ -24,13 +26,18 @@ public class PhpTravelsHotelsDetalle extends PhpBasePage{
     private final String COUNTRY_CSS = "#guestform > div:nth-child(5) > div > div.chosen-container.chosen-container-single";
     private final String SELECT_COUNTRY_CSS = "#guestform > div:nth-child(5) > div > div.chosen-container.chosen-container-single.chosen-with-drop.chosen-container-active > div > ul > li:nth-child(6)";
 
+    private final String FORM_EXTRA_CSS = "#bookingdetails > div.bg-white-shadow.pt-25.ph-30.pb-40.mt-30";
     private final String EXTRA_UNO_XPATH = "//*[@id=\"bookingdetails\"]/div[2]/div/table/tbody/tr[1]/td[4]/label/span[1]";
     private final String EXTRA_DOS_XPATH = "//*[@id=\"bookingdetails\"]/div[2]/div/table/tbody/tr[3]/td[4]/label/span[1]";
 
+    private final String FORM_CONFIRM_CSS = "#bookingdetails > div.alert.alert-info.mt-30";
     private final String CONFIRM_CSS = "#bookingdetails > div.form-group > button";
 
 
     public void completoFormularioNombre(String name, String surname){
+        WebElement form = driver.findElement(By.cssSelector(FORM_CSS));
+        js.executeScript("arguments[0].scrollIntoView();", form);
+
         driver.findElement(By.cssSelector(FIRST_NAME_CSS)).clear();
         driver.findElement(By.cssSelector(FIRST_NAME_CSS)).sendKeys(name);
 
@@ -63,15 +70,20 @@ public class PhpTravelsHotelsDetalle extends PhpBasePage{
     }
 
     public void seleccionoExtra(){
+        WebElement extra = driver.findElement(By.cssSelector(FORM_EXTRA_CSS));
+        js.executeScript("arguments[0].scrollIntoView();", extra);
+
         driver.findElement(By.xpath(EXTRA_UNO_XPATH)).click();
-        sleep(2000);
         driver.findElement(By.xpath(EXTRA_DOS_XPATH)).click();
         sleep(2000);
     }
 
 
     public void confirm(){
-        sleep(2000);
+        WebElement confirmacion = driver.findElement(By.cssSelector(FORM_CONFIRM_CSS));
+        js.executeScript("arguments[0].scrollIntoView();", confirmacion);
+
+        sleep(1000);
         clickElement(By.cssSelector(CONFIRM_CSS));
     }
 }

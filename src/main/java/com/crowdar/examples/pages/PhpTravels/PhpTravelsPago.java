@@ -29,8 +29,9 @@ public class PhpTravelsPago extends PhpBasePage{
     }
 
     public void manejoAlerta(){
-        sleep(2000);
+        sleep(1000);
         Alert alert = driver.switchTo().alert();
+        sleep(1000);
         alert.accept();
     }
 
