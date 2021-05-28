@@ -29,16 +29,13 @@ public class PhpTravelsPago extends PhpBasePage{
     }
 
     public void manejoAlerta(){
-        sleep(1000);
         Alert alert = driver.switchTo().alert();
-        sleep(1000);
         alert.accept();
     }
 
     public void confirmacion(){
         waitForElementPresence(By.cssSelector(CONFIRMACION_CSS));
         Assert.assertTrue(isElementPresent(By.cssSelector(CONFIRMACION_CSS)), "El contenedor no Esta");
-        sleep(3000);
     }
 
 }
