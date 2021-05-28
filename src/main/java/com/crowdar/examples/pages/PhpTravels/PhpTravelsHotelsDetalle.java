@@ -38,7 +38,6 @@ public class PhpTravelsHotelsDetalle extends PhpBasePage{
         WebElement form = driver.findElement(By.cssSelector(FORM_CSS));
         js.executeScript("arguments[0].scrollIntoView();", form);
 
-        driver.findElement(By.cssSelector(FIRST_NAME_CSS)).clear();
         driver.findElement(By.cssSelector(FIRST_NAME_CSS)).sendKeys(name);
 
         driver.findElement(By.cssSelector(SURNAME_CSS)).clear();
@@ -46,16 +45,13 @@ public class PhpTravelsHotelsDetalle extends PhpBasePage{
     }
 
     public void completoFormularioMail(String mail, String confEmail, String number, String address){
-        driver.findElement(By.cssSelector(EMAIL_CSS)).clear();
+
         driver.findElement(By.cssSelector(EMAIL_CSS)).sendKeys(mail);
 
-        driver.findElement(By.cssSelector(EMAIL_CONF_CSS)).clear();
         driver.findElement(By.cssSelector(EMAIL_CONF_CSS)).sendKeys(confEmail);
 
-        driver.findElement(By.cssSelector(NUMBERS_CONTACT_CSS)).clear();
         driver.findElement(By.cssSelector(NUMBERS_CONTACT_CSS)).sendKeys(number);
 
-        driver.findElement(By.cssSelector(DIREC_CSS)).clear();
         driver.findElement(By.cssSelector(DIREC_CSS)).sendKeys(address);
     }
 
@@ -83,7 +79,6 @@ public class PhpTravelsHotelsDetalle extends PhpBasePage{
         WebElement confirmacion = driver.findElement(By.cssSelector(FORM_CONFIRM_CSS));
         js.executeScript("arguments[0].scrollIntoView();", confirmacion);
 
-        sleep(1000);
         clickElement(By.cssSelector(CONFIRM_CSS));
     }
 }

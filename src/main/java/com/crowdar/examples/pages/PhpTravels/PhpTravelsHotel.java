@@ -33,13 +33,17 @@ public class PhpTravelsHotel extends PhpHomePage {
     public void datePicker(){
         clickElement(By.cssSelector(DATE_CSS));
         waitForElementPresence(By.xpath(CALENDAR_XPATH));
-        driver.findElement(By.xpath(DAY_XPATH)).click();
+        clickElement(By.xpath(DAY_XPATH));
+
+        //driver.findElement(By.xpath(DAY_XPATH)).click();
     }
 
     public void infantPicker(){
         clickElement(By.xpath(INFANT_XPATH));
         waitForElementPresence(By.xpath(INFANT_NUMBERS_XPATH));
-        driver.findElement(By.xpath(INFANT_NUMBERS_XPATH)).click();
+        clickElement(By.xpath(INFANT_NUMBERS_XPATH));
+
+        //driver.findElement(By.xpath(INFANT_NUMBERS_XPATH)).click();
     }
 
     public void clickBook(){
